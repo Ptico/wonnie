@@ -1,0 +1,47 @@
+{
+  "name": "wonnie-example",
+  "version": "0.1.0",
+  "description": "Wonnie stack example project",
+  "main": "gulpfile.js",
+  "repository": "https://github.com/Ptico/wonnie",
+  "directories": {
+    "assets": "assets"
+  },
+  "dependencies": {
+    "autoprefixer": "^6.3.6",
+    "babel-plugin-transform-es2015-arrow-functions": "^6.8.0",
+    "babel-plugin-transform-es2015-block-scoped-functions": "^6.8.0",
+    "babel-plugin-transform-es2015-block-scoping": "^6.9.0",
+    "babel-plugin-transform-es2015-computed-properties": "^6.8.0",
+    "babel-plugin-transform-es2015-constants": "^6.1.4",
+    "babel-plugin-transform-es2015-destructuring": "^6.9.0",
+    "babel-plugin-transform-es2015-parameters": "^6.9.0",
+    "babel-plugin-transform-es2015-shorthand-properties": "^6.8.0",
+    "babel-plugin-transform-es2015-spread": "^6.8.0",
+    "babel-plugin-transform-es2015-template-literals": "^6.8.0",
+    "babel-plugin-transform-undefined-to-void": "^6.8.0",
+    "babel-plugin-undefined-to-void": "^1.1.6",
+    "cssnano": "^3.7.1",
+    "del": "^2.2.0",
+    "glob": "^7.0.3",
+    "gulp": "^3.9.1",
+    "gulp-brotli": "^1.2.0",
+    "gulp-gzip": "^1.4.0",
+    "gulp-imagemin": "^3.0.1",
+    "gulp-postcss": "^6.1.1",
+    "gulp-rev-all": "^0.8.24",
+    "gulp-rev-delete-original": "^0.1.0",
+    "gulp-sass": "^2.3.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "imageoptim": "^0.4.1",
+    "rollup": "^0.31.1",
+    "rollup-plugin-babel": "^2.5.1",
+    "rollup-plugin-includepaths": "^0.1.5",
+    "rollup-plugin-uglify": "^1.0.0"
+  },
+  "devDependencies": {
+    "run-sequence": "^1.2.2"
+  },
+  "author": "andrey@aejis.eu",
+  "license": "MIT"
+}
