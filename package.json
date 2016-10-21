@@ -26,6 +26,7 @@
     "glob": "^7.0.3",
     "gulp": "^3.9.1",
     "gulp-brotli": "^1.2.0",
+    "gulp-fontmin": "^0.7.4",
     "gulp-gzip": "^1.4.0",
     "gulp-imagemin": "^3.0.1",
     "gulp-postcss": "^6.1.1",

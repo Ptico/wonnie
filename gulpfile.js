@@ -1,4 +1,6 @@
-var gulp = require('gulp'),
+var fs = require('fs'),
+    crypto = require('crypto'),
+    gulp = require('gulp'),
     util = require('gulp-util'),
     glob = require('glob'),
     path = require('path'),
@@ -7,6 +9,7 @@ var gulp = require('gulp'),
     brotli = require('gulp-brotli'),
     RevAll = require('gulp-rev-all'),
     revdel = require('gulp-rev-delete-original'),
+    fontmin = require('gulp-fontmin'),
     through = require('through2'),
     imagemin   = require('gulp-imagemin'),
     imageOptim = require('imageoptim');
@@ -25,11 +28,25 @@ var gulp = require('gulp'),
  Main tasks
  **********/
 gulp.task('dev', function(done) {
-  return runSequence('clean', ['css:compile:dev', 'css:copy:dev', 'js:compile:dev', 'images:dev'], done);
+  return runSequence('clean', [
+    'css:compile:dev',
+    'css:copy:dev',
+    'js:compile:dev',
+    'images:dev',
+    'fonts:dev',
+    'favicon'
+  ], done);
 });
 
 gulp.task('prod', function(done) {
-  return runSequence('clean', ['css:compile:prod', 'css:copy:prod', 'js:compile:prod', 'images:prod'], done);
+  return runSequence('clean', [
+    'css:compile:prod',
+    'css:copy:prod',
+    'js:compile:prod',
+    'images:prod',
+    'fonts:prod',
+    'favicon'
+  ], done);
 });
 
 gulp.task('build', function(done) {
@@ -40,7 +57,7 @@ gulp.task('watch', ['dev'], function() {
   gulp.watch('assets/css/**/*.scss', ['css:compile:dev']);
   gulp.watch('assets/css/**/*.css', ['css:copy:dev']);
   gulp.watch('assets/js/**/*.js', ['js:compile:dev']);
-  gulp.watch('assets/img/*', ['images:dev']);
+  gulp.watch('assets/img/**/*', ['images:dev']);
 });
 
 /****************
@@ -104,11 +121,28 @@ gulp.task('imageoptim', function(done) {
 
 gulp.task('images:prod', ['imagemin', 'imageoptim']);
 
+/************
+ Fonts tasks
+ ************/
+gulp.task('fonts:dev', function() {
+  return gulp.src('assets/fonts/**/*').pipe(gulp.dest('public/fonts'));
+});
+
+gulp.task('fonts:prod', function() {
+  return gulp.src('assets/fonts/**/*')
+    .pipe(fontmin())
+    .pipe(gulp.dest('public/fonts'));
+});
+
 /******************
  Build finalization
  ******************/
 gulp.task('clean', function() {
   return del('public/**/*');
+});
+
+gulp.task('favicon', function() {
+  return gulp.src(['assets/favicon.ico']).pipe(gulp.dest('public'));
 });
 
 gulp.task('rev', function () {
@@ -220,7 +254,14 @@ function fixManifest(file, enc, cb) {
       newManifest = {};
 
   Object.keys(manifest).forEach(function(k) {
-    newManifest['/' + k] = '/' + manifest[k];
+    var path = manifest[k],
+        file = fs.readFileSync('./public/' + path),
+        sha  = crypto.createHash('sha256');
+
+    newManifest['/' + k] = {
+      'target': '/' + path,
+      'sri': ['sha256-' + sha.update(file).digest('base64')]
+    };
   });
 
   file.contents = new Buffer(JSON.stringify(newManifest, null, 2));
