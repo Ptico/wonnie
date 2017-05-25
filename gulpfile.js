@@ -209,7 +209,7 @@ function jsBuild(minify) {
   return Promise.all(jobs);
 }
 
-var autoprefixerOptions = { browsers: ['last 2 versions'], cascade: false };
+var autoprefixerOptions = { cascade: false };
 
 function cssBuild(minify) {
   var postCSSPlugins = [autoprefixer(autoprefixerOptions)];

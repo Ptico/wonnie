@@ -4,11 +4,12 @@
   "description": "Wonnie stack example project",
   "main": "gulpfile.js",
   "repository": "https://github.com/Ptico/wonnie",
+  "browserslist": "last 2 versions",
   "directories": {
     "assets": "assets"
   },
   "dependencies": {
-    "autoprefixer": "^6.3.6",
+    "autoprefixer": "^7.1.1",
     "babel-plugin-transform-es2015-arrow-functions": "^6.8.0",
     "babel-plugin-transform-es2015-block-scoped-functions": "^6.8.0",
     "babel-plugin-transform-es2015-block-scoping": "^6.9.0",
@@ -21,24 +22,24 @@
     "babel-plugin-transform-es2015-template-literals": "^6.8.0",
     "babel-plugin-transform-undefined-to-void": "^6.8.0",
     "babel-plugin-undefined-to-void": "^1.1.6",
-    "cssnano": "^3.7.1",
+    "cssnano": "^3.10.0",
     "del": "^2.2.0",
     "glob": "^7.0.3",
     "gulp": "^3.9.1",
     "gulp-brotli": "^1.2.0",
     "gulp-fontmin": "^0.7.4",
     "gulp-gzip": "^1.4.0",
-    "gulp-imagemin": "^3.0.1",
-    "gulp-postcss": "^6.1.1",
+    "gulp-imagemin": "^3.1.1",
+    "gulp-postcss": "^7.0.0",
     "gulp-rev-all": "^0.8.24",
     "gulp-rev-delete-original": "^0.1.0",
-    "gulp-sass": "^2.3.1",
-    "gulp-sourcemaps": "^1.6.0",
-    "imageoptim": "^0.4.1",
-    "rollup": "^0.36.3",
-    "rollup-plugin-babel": "^2.5.1",
-    "rollup-plugin-includepaths": "^0.1.5",
-    "rollup-plugin-uglify": "^1.0.0"
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.4.1",
+    "imageoptim": "^0.4.2",
+    "rollup": "^0.41.4",
+    "rollup-plugin-babel": "^2.7.1",
+    "rollup-plugin-includepaths": "^0.1.8",
+    "rollup-plugin-uglify": "^1.0.1"
   },
   "devDependencies": {
     "run-sequence": "^1.2.2"
